@@ -1,4 +1,4 @@
-﻿using Smod2.Commands;
+using Smod2.Commands;
 
 namespace AdminHierarchyImmunity
 {

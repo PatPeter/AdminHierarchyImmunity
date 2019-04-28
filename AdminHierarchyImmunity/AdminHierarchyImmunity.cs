@@ -1,4 +1,4 @@
-﻿using Smod2;
+using Smod2;
 using Smod2.Attributes;
 using Smod2.Config;
 using Smod2.EventHandlers;

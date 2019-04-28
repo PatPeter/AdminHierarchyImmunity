@@ -65,7 +65,7 @@ namespace AdminHierarchyImmunity
 			// Do not allow moderators of the same rank to kick each other or themselves
 			else if (adminLevel <= targetLevel)
 			{
-				this.plugin.Info("Admin " + ev.Admin.ToString() + " tried to ban the same or higher-ranking admin " + ev.Player.ToString());
+				this.plugin.Info("[STAFF VIOLATION] Admin " + ev.Admin.ToString() + " tried to ban the same or higher-ranking admin " + ev.Player.ToString());
 				ev.Player.PersonalBroadcast(5, "You cannot ban " + ev.Player.Name + " because he/she is the same or higher rank than you.", false);
 				ev.AllowBan = false;
 			}

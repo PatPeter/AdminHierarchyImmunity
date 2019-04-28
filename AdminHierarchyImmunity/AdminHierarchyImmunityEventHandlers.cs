@@ -16,7 +16,12 @@ namespace AdminHierarchyImmunity
 
 		void IEventHandlerAdminQuery.OnAdminQuery(AdminQueryEvent ev)
 		{
-			this.plugin.Info(ev.Admin.Name + "/" + ev.Admin.SteamId + (ev.Handled ? " handled " : " did not handle ") + (ev.Successful ? "successful " : "unsuccessful ") + "query: " + ev.Query + " | Result: " + ev.Output);
+			// This event constantly spams this query to console
+			// REQUEST_DATA PLAYER_LIST SILENT
+			if (ev.Query.IndexOf("REQUEST_DATA") == -1)
+			{
+				this.plugin.Info(ev.Admin.Name + "/" + ev.Admin.SteamId + (ev.Handled ? " handled " : " did not handle ") + (ev.Successful ? "successful " : "unsuccessful ") + "query: " + ev.Query + " | Result: " + ev.Output);
+			}
 		}
 	}
 
@@ -38,16 +43,20 @@ namespace AdminHierarchyImmunity
 			for (int i = 0; i < tree.Length; i++)
 			{
 				string rank = tree[i];
+				this.plugin.Info("Is the admin's rank equal to" + (ev.Admin.GetUserGroup() != null ? ev.Admin.GetUserGroup().Name : "RN:" + ev.Admin.GetRankName()) + " equal to " + rank + "?");
 				if (ev.Admin.GetUserGroup() != null && ev.Admin.GetUserGroup().Name == rank)
 				{
 					adminLevel = i;
 				}
+
+				this.plugin.Info("Is the player's rank equal to" + (ev.Player.GetUserGroup() != null ? ev.Player.GetUserGroup().Name : "RN:" + ev.Player.GetRankName()) + " equal to " + rank + "?");
 				if (ev.Player.GetUserGroup() != null && ev.Player.GetUserGroup().Name == rank)
 				{
 					targetLevel = i;
 				}
 			}
 
+			this.plugin.Info("Is " + adminLevel + " <= " + targetLevel + "?");
 			if (adminLevel == 0)
 			{
 				this.plugin.Info("Allowing staff or global moderator " + ev.Admin.ToString() + " to ban " + ev.Player.ToString() + ".");

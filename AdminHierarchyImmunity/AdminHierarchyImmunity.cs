@@ -13,7 +13,7 @@ namespace AdminHierarchyImmunity
 		id = "patpeter.admin.hierarchy.immunity",
 		configPrefix = "ahi",
 		langFile = "admin_hierarchy_immunity",
-		version = "1.0.0.2",
+		version = "1.0.0.3",
 		SmodMajor = 3,
 		SmodMinor = 4,
 		SmodRevision = 0
@@ -34,6 +34,8 @@ namespace AdminHierarchyImmunity
 		{
 			// Register Events
 			this.AddEventHandler(typeof(IEventHandlerAdminQuery), new AdminQueryHandler(this), Priority.Highest);
+			this.AddEventHandler(typeof(IEventHandlerBan), new BanHandler(this), Priority.Highest);
+			//this.AddEventHandler(typeof(IEventHandlerAuthCheck), new AuthCheckHandler(this), Priority.Highest);
 			// Register Commands
 			this.AddCommand("ahi_toggle", new ToggleCommand(this));
 			// Register config settings

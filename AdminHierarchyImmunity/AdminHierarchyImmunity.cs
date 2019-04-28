@@ -13,7 +13,7 @@ namespace AdminHierarchyImmunity
 		id = "patpeter.admin.hierarchy.immunity",
 		configPrefix = "ahi",
 		langFile = "admin_hierarchy_immunity",
-		version = "1.0.0.3",
+		version = "1.0.0.4",
 		SmodMajor = 3,
 		SmodMinor = 4,
 		SmodRevision = 0

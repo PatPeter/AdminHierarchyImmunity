@@ -66,7 +66,8 @@ namespace AdminHierarchyImmunity
 			else if (adminLevel <= targetLevel)
 			{
 				this.plugin.Info("[STAFF VIOLATION] Admin " + ev.Admin.ToString() + " tried to ban the same or higher-ranking admin " + ev.Player.ToString());
-				ev.Player.PersonalBroadcast(5, "You cannot ban " + ev.Player.Name + " because he/she is the same or higher rank than you.", false);
+				ev.Player.PersonalBroadcast(5, ev.Player.Name + " tried to ban you. Please report this to your superior.", false);
+				ev.Admin.PersonalBroadcast(5, "You cannot ban " + ev.Player.Name + " because he/she is the same or higher rank than you.", false);
 				ev.AllowBan = false;
 			}
 			else

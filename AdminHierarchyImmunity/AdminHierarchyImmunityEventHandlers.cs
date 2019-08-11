@@ -34,8 +34,20 @@ namespace AdminHierarchyImmunity
 			this.plugin = plugin;
 		}
 
+		/*
+[14:56:59] [ERROR] [Event] Event Handler: AdminHierarchyImmunity.BanHandler Failed to handle event:Smod2.Events.BanEvent
+[14:56:59] [ERROR] [Event] System.NullReferenceException: Object reference not set to an instance of an object
+  at AdminHierarchyImmunity.BanHandler.OnBan (Smod2.Events.BanEvent ev) [0x00024] in <15c19d21366e44289781caa444765374>:0
+  at Smod2.Events.BanEvent.ExecuteHandler (Smod2.EventHandlers.IEventHandler handler) [0x00000] in <30cbd5c820004c7aa2b3d48e637031c6>:0
+  at Smod2.Events.EventManager.HandleEvent[T] (Smod2.Events.Event ev) [0x00016] in <30cbd5c820004c7aa2b3d48e637031c6>:0
+		*/
 		public void OnBan(BanEvent ev)
 		{
+			if (ev.Admin == null || ev.Player == null)
+			{
+				return;
+			}
+
 			string[] tree = this.plugin.GetConfigList("ahi_tree");
 
 			int adminLevel = 0;
@@ -91,4 +103,4 @@ namespace AdminHierarchyImmunity
 			
 		}
 	}*/
-}
+	}
